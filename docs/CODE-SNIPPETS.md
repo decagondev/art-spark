@@ -4,46 +4,45 @@ This document provides key code snippets for the ArtSpark project, organized by 
 
 ## Project Setup
 
-### pom.xml Dependencies
-```xml
-<dependencies>
-    <!-- Spring Boot Starter -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-security</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-mongodb</artifactId>
-    </dependency>
-    <!-- Deeplearning4j for AI -->
-    <dependency>
-        <groupId>org.deeplearning4j</groupId>
-        <artifactId>deeplearning4j-core</artifactId>
-        <version>1.0.0-M2.1</version>
-    </dependency>
-    <dependency>
-        <groupId>org.nd4j</groupId>
-        <artifactId>nd4j-arrow</artifactId>
-        <version>1.0.0-M2.1</version>
-    </dependency>
-    <!-- Testing -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-test</artifactId>
-        <scope>test</scope>
-    </dependency>
-    <!-- Other utilities (e.g., Lombok for boilerplate reduction) -->
-    <dependency>
-        <groupId>org.projectlombok</groupId>
-        <artifactId>lombok</artifactId>
-        <optional>true</optional>
-    </dependency>
-</dependencies>
+### Gradle build (build.gradle.kts)
+```kotlin
+plugins {
+    id("java")
+    id("org.springframework.boot") version "3.3.4"
+    id("io.spring.dependency-management") version "1.1.6"
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot Starters
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+
+    // Deeplearning4j for AI
+    implementation("org.deeplearning4j:deeplearning4j-core:1.0.0-M2.1")
+    implementation("org.nd4j:nd4j-arrow:1.0.0-M2.1")
+
+    // Lombok (optional)
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+
+    // Testing
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
 ```
 
 ### Main Application Class

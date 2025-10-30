@@ -46,7 +46,7 @@ This epic focuses on the user input form and integrating the AI model for projec
 ### PR 2.2: Integrate AI Model for Project Idea Generation
 - **Description**: Load and integrate the AI model using Deeplearning4j, process inputs, and generate ideas.
 - **Commits**:
-  1. Add Deeplearning4j and ND4J dependencies to pom.xml.
+  1. Add Deeplearning4j and ND4J dependencies to build.gradle / build.gradle.kts.
   2. Create a service class (e.g., AiService) to load the model from 'artstylemodel.zip'.
   3. Implement method to convert UserPreferencesDTO to INDArray input.
   4. Add logic to generate output and parse into ProjectIdea objects (using provided code snippet).

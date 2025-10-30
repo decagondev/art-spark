@@ -29,7 +29,7 @@ For detailed project requirements, tasks, API docs, and code examples, refer to 
 - **Database**: MongoDB 5.0
 - **AI Integration**: Deeplearning4j with TensorFlow models
 - **Security**: Spring Security for authentication
-- **Build Tool**: Maven
+- **Build Tool**: Gradle
 - **Frontend**: Thymeleaf templates (with potential for expansion to React or similar)
 
 ## Setup Instructions
@@ -37,7 +37,7 @@ For detailed project requirements, tasks, API docs, and code examples, refer to 
 ### Prerequisites
 
 - Java 17 (JDK)
-- Maven 3.6+
+- Gradle 8+
 - MongoDB 5.0+ (running locally or via Docker)
 - Git
 
@@ -54,23 +54,23 @@ For detailed project requirements, tasks, API docs, and code examples, refer to 
    - Update `src/main/resources/application.yml` with your MongoDB URI if needed (default: `mongodb://localhost:27017/artsparkdb`).
 
 3. **Build the Project**:
-   ```
-   mvn clean install
-   ```
+```
+./gradlew clean build
+```
 
 4. **Run the Application**:
-   ```
-   mvn spring-boot:run
-   ```
+```
+./gradlew bootRun
+```
    - The app will start on `http://localhost:8080`.
    - Access the input form at `/input`, API at `/api` endpoints.
 
 5. **AI Model Setup**:
    - Place the pre-trained model file `artstylemodel.zip` in the root or resources directory (as per code snippets).
-   - Ensure Deeplearning4j dependencies are resolved via Maven.
+- Ensure Deeplearning4j dependencies are resolved via Gradle.
 
 6. **Testing**:
-   - Run unit/integration tests: `mvn test`.
+- Run unit/integration tests: `./gradlew test`.
    - Use tools like Postman to test API endpoints (see `/docs/API.md` for details).
 
 ### Docker Setup (Optional)
